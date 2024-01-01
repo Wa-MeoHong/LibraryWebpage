@@ -14,6 +14,8 @@
 
 package LibraryWebpage_Demo.LibraryWebpage.dto;
 
+import LibraryWebpage_Demo.LibraryWebpage.entity.BookListEntity;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -23,6 +25,7 @@ public class BookListDTO {
     private Long bookid;
     private Long isbn;
 
+    // DTO -> Entity Transform Function
     public BookListEntity toEntity() {
         BookListEntity build = BookListEntity.builder()
                 .bookid(bookid)
@@ -31,6 +34,7 @@ public class BookListDTO {
         return build;
     }
 
+    // Entity -> DTO Transform Function
     public static BookListDTO toBookListDTO(BookListEntity bookListEntity){
         BookListDTO dto = new BookListDTO();
 
@@ -40,6 +44,7 @@ public class BookListDTO {
         return dto;
     }
 
+    // Builder를 통한 DTO 생성기
     @Builder
     public BookListDTO (Long bookid, Long isbn) {
         this.bookid = bookid;
