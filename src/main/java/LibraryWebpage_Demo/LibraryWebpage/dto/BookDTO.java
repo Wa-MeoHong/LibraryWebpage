@@ -15,7 +15,6 @@
 package LibraryWebpage_Demo.LibraryWebpage.dto;
 
 import LibraryWebpage_Demo.LibraryWebpage.entity.BookEntity;
-import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
