@@ -2,7 +2,7 @@
  *	File : RentalListDTO.java
  *	Name : Shin Dae Hong
  *	Data : 2024 / 01 / 01
- *	objective : Class BookListDTO
+ *	objective : Class RentalListDTO
  *			RentalList Table DTO, Used in WEB, Back Server
  *
  *	Modified
