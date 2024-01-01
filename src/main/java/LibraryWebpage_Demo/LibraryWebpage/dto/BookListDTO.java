@@ -27,11 +27,11 @@ public class BookListDTO {
 
     // DTO -> Entity Transform Function
     public BookListEntity toEntity() {
-        BookListEntity build = BookListEntity.builder()
+        BookListEntity building = BookListEntity.builder()
                 .bookid(bookid)
                 .isbn(isbn)
                 .build();
-        return build;
+        return building;
     }
 
     // Entity -> DTO Transform Function
