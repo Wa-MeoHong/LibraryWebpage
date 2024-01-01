@@ -2,8 +2,8 @@
  *	File : RentalListEntity.java
  *	Name : Shin Dae Hong
  *	Data : 2024 / 01 / 01
- *	objective : Class RentalListDTO
- *			RentalList Table DTO, Used in WEB, Back Server
+ *	objective : Class RentalListEntity
+ *			RentalList Table Entity, DB <-> Web..
  *
  *	Modified
  *	=============================================================
@@ -66,7 +66,7 @@ public class RentalListEntity {
     @ColumnDefault("0")
     private int extending;
 
-    // Builder Function, BookListEntity Build
+    // Builder Function, RentalListEntity Build
     @Builder
     public RentalListEntity(Long rentalid, Long bookid, Long userid, String rentalstate,
                             LocalDate rentaldate, LocalDate returndate, int extending) {
