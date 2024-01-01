@@ -41,5 +41,4 @@ public class ReserveDTO {
         this.rentalstate = rentalstate;
         this.extending = extending;
     }
-
 }
