@@ -1,0 +1,24 @@
+#DataBase 연동 설정
+
+spring:
+  # Mustache 중 Session 로그인에 사용됨
+  mustache:
+    expose-request-attributes: true
+    expose-session-attributes: true
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://${MYSQL_HOST:localhost}:50000/Library_db?ServerTimezone=Asia/Seoul&characterEncoding=UTF-8
+    username: root
+    password: dev2132
+
+  thymeleaf:
+    cache: false
+
+  # spring data jpa 설정
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL57Dialect
+    open-in-view: false
+    show-sql: true
+    hibernate:
+      ddl-auto: update
