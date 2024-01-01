@@ -34,7 +34,7 @@ public class BookDTO {
 
     // DTO -> Entity Transform Function
     public BookEntity toEntity(){
-        BookEntity build = BookEntity.builder()
+        BookEntity building = BookEntity.builder()
                 .isbn(isbn)
                 .author(author)
                 .title(title)
@@ -42,7 +42,7 @@ public class BookDTO {
                 .publishdate(publishdate)
                 .build();
 
-        return build;
+        return building;
     }
 
 
