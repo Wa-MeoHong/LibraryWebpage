@@ -1,3 +1,17 @@
+/*
+ *	File : BookService.java
+ *	Name : Shin Dae Hong
+ *	Data : 2024 / 01 / 02
+ *	objective : Class BookService
+ *			Book Service, Function class that actually provides the service
+ *
+ *	Modified
+ *	=============================================================
+ *		1	|	01/02	|	First Write
+ *		2	|	01/02	|	...
+ *	=============================================================
+ */
+
 package LibraryWebpage_Demo.LibraryWebpage.service;
 
 import LibraryWebpage_Demo.LibraryWebpage.dto.BookDTO;
