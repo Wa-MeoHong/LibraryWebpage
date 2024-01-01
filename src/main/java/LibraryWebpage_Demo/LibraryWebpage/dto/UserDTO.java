@@ -35,7 +35,7 @@ public class UserDTO {
 
     // DTO -> Entity Transform Function
     public UserEntity toEntity() {
-        UserEntity build = UserEntity.builder()
+        UserEntity building = UserEntity.builder()
                 .id(ID)
                 .loginid(loginid)
                 .PW(Password)
@@ -46,7 +46,7 @@ public class UserDTO {
                 .memberdate(MemberDate)
                 .reginum(reginum)
                 .build();
-        return build;
+        return building;
     }
 
     // Entity -> DTO Transform Function
