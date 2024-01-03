@@ -1,0 +1,150 @@
+<!--로그인 페이지-->
+<!--login.html-->
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로그인 - Bootstrap</title>
+
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="../../static/assets/favicon.ico" />
+    <!-- Bootstrap icons-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="/css/styles.css?after" rel="stylesheet" />
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <!-- jquery cdn -->
+    <script
+            src="https://code.jquery.com/jquery-3.7.1.min.js"
+            integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+            crossorigin="anonymous"></script>
+
+    <style>
+        body {
+            min-height: 100vh;
+
+            background-image: url('https://images.unsplash.com/photo-1543248939-4296e1fea89b?q=80&w=1174&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+            background-position: center;
+            background-size: cover;
+	        background-attachment: fixed
+
+        }
+
+        .input-form {
+            max-width: 240px;
+
+            margin-top: 80px;
+            padding: 32px;
+
+            background: #fff;
+            -webkit-border-radius: 10px;
+            -moz-border-radius: 10px;
+            border-radius: 10px;
+            -webkit-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
+            -moz-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
+            box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15)
+        }
+    </style>
+    <!--
+            background: -webkit-gradient(linear, left bottom, right top, from(#92dbb0), to(#259535));
+            background: -webkit-linear-gradient(bottom left, #92dbb0 0%, #259535 100%);
+            background: -moz-linear-gradient(bottom left, #92dbb0 0%, #259535 100%);
+            background: -o-linear-gradient(bottom left, #92dbb0 0%, #259535 100%);
+            background: linear-gradient(to top right, #92dbb0 0%, #259535 100%);
+     -->
+</head>
+
+<body background="/user/Bookshelf.jpg">
+<form method="post" action="/login-process">
+    <header th:insert="~{common/header_login.html}"></header>
+
+    <div class="container">
+        <!-- Action : form에 작성한 데이터를 어3디에다가 보낼까?를 지정한다. -->
+
+        <div class="input-form-backgroud row">
+            <!-- 로그인 홈 화면,  -->
+            <div class="input-form col-md-12 mx-auto">
+                <h4 class="mb-3">로그인</h4>
+                <form class="validation-form" novalidate>
+                    <!-- 첫번째 라인 -->
+                    <div class="row">
+                        <!-- 회원 아이디 입력 -->
+                        <div class="mb-3">
+                            <label for="inputUserID">ID</label>
+                            <input type="text" class="form-control" id="inputUserID" name="loginid" placeholder="사용자 아이디" value="" required>
+                            <p id="check-result"></p>
+                            <div class="invalid-feedback">
+                                아이디를 입력해주세요.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 두번째 라인 -->
+                    <div class="row">
+                        <!-- 패스워드 입력 칸  -->
+                        <div class="mb-3">
+                            <label for="inputPassword4">패스워드</label>
+                            <input type="password" class="form-control" id="inputPassword4" name="password" placeholder="패스워드" value="" required>
+                            <div class="invalid-feedback">
+                                패스워드를 입력해주세요.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 마지막번째 라인 -->
+                    <!-- 명시적, 개인정보 수집 이용.. -->
+                    <hr class="mb-4">
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="aggrement" required>
+                        <label class="custom-control-label" for="aggrement">보안로그인</label>
+                    </div>
+                    <!-- 여덟번째 라인 -->
+                    <!-- 가입 버튼 -->
+                    <div class="mb-4"></div>
+                    <button class="btn btn-primary" style="background-color:brown; border-color:brown" type="submit">로그인</button>
+                </form>
+            </div>
+        </div>
+        <footer class="my-3 text-center text-small">
+            <p class="mb-1">&copy; 2023 YU ICE 사진 저작자 : Unsplash 의 Vladimir Mokry</p>
+        </footer>
+    </div>
+    <!--
+    <script>
+        window.addEventListener('load', () => {
+          const forms = document.getElementsByClassName('validation-form');
+
+          Array.prototype.filter.call(forms, (form) => {
+            form.addEventListener('submit', function (event) {
+              if (form.checkValidity() === false) {
+                event.preventDefault();
+                event.stopPropagation();
+              }
+
+              form.classList.add('was-validated');
+            }, false);
+          });
+        }, false);
+    </script>
+    -->
+</form>
+<!-- Bootstrap core JS-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Core theme JS-->
+<script src="js/scripts.js"></script>
+<!-- Bootstrap JS -->
+<script th:src="@{/bootstrap.min.js}"></script>
+
+
+</body>
+
+
+</html>
