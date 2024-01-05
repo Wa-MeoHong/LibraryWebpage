@@ -1,0 +1,272 @@
+<!--회원가입 페이지-->
+<!--signup.html-->
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원가입 화면 - Bootstrap</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <!-- jquery cdn -->
+    <script
+            src="https://code.jquery.com/jquery-3.7.1.min.js"
+            integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+            crossorigin="anonymous"></script>
+
+    <style>
+        body {
+            min-height: 100vh;
+
+            background-image: url('https://images.unsplash.com/photo-1543248939-4296e1fea89b?q=80&w=1174&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+            background-position: center;
+            background-size: cover;
+	        background-attachment: fixed
+
+
+        }
+
+        .input-form {
+            max-width: 680px;
+
+            margin-top: 80px;
+            padding: 32px;
+
+            background: #fff;
+            -webkit-border-radius: 10px;
+            -moz-border-radius: 10px;
+            border-radius: 10px;
+            -webkit-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
+            -moz-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
+            box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15)
+        }
+    </style>
+    <!--
+            background: -webkit-gradient(linear, left bottom, right top, from(#92b5db), to(#1d466c));
+            background: -webkit-linear-gradient(bottom left, #92b5db 0%, #1d466c 100%);
+            background: -moz-linear-gradient(bottom left, #92b5db 0%, #1d466c 100%);
+            background: -o-linear-gradient(bottom left, #92b5db 0%, #1d466c 100%);
+            background: linear-gradient(to top right, #92b5db 0%, #1d466c 100%);
+    -->
+</head>
+
+
+<body>
+<header th:insert="~{common/header_login.html}"></header>
+<form method="post" action="/user/signup">
+
+    <div class="container">
+
+        <!-- Action : form에 작성한 데이터를 어3디에다가 보낼까?를 지정한다. -->
+
+        <div class="input-form-backgroud row">
+            <!-- 회원가입 홈 화면,  -->
+            <div class="input-form col-md-12 mx-auto">
+                <h4 class="mb-3">회원가입</h4>
+                <form class="validation-form" novalidate>
+                    <!-- 첫번째 라인 -->
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+
+                            <!-- 이름 입력 칸  -->
+                            <label for="inputName">이름</label>
+                            <input type="text" class="form-control" id="inputName" name="name" placeholder="사용자 이름" value="" required>
+                            <div class="invalid-feedback">
+                                이름을 입력해주세요.
+                            </div>
+                        </div>
+
+                        <!-- 회원 아이디 입력 -->
+                        <div class="col-md-6 mb-3">
+                            <label for="inputUserID">ID</label>
+                            <input type="text" class="form-control" id="inputUserID" name="loginid" onblur="loginIDCheck()" placeholder="사용자 아이디" value="" required>
+                            <p id="check-result"></p>
+                            <div class="invalid-feedback">
+                                아이디를 입력해주세요.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 두번째 라인 -->
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+
+                            <!-- 패스워드 입력 칸  -->
+                            <label for="inputPassword4">패스워드</label>
+                            <input type="password" class="form-control" id="inputPassword4" name="passwordcheck" placeholder="패스워드" value="" required>
+                            <div class="invalid-feedback">
+                                패스워드를 입력해주세요.
+                            </div>
+                        </div>
+
+                        <!-- 패스워드 확인 입력 칸 -->
+                        <div class="col-md-6 mb-3">
+                            <label for="inputPasswordCheck4">패스워드확인</label>
+                            <input type="password" class="form-control" id="inputPasswordCheck4" name="password" onblur="PasswordCheck()" placeholder="패스워드확인" value="" required>
+                            <p id="check-result-password"></p>
+                            <div class="invalid-feedback">
+                                패스워드 확인을 해주세요.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 세번째 라인-->
+                    <!-- 이메일 입력 -->
+                    <div class="mb-3">
+                        <label for="inputEmail4">이메일</label>
+                        <input type="email" class="form-control" id="inputEmail4" name="email" placeholder="you@example.com" required>
+                        <div class="invalid-feedback">
+                            이메일을 입력해주세요.
+                        </div>
+                    </div>
+
+                    <!-- 네번째 라인-->
+                    <!-- 주소 입력 -->
+                    <div class="mb-3">
+                        <label for="inputAddress4">주소</label>
+                        <input type="text" class="form-control" id="inputAddress4" name="address" placeholder="서울특별시 강남구" required>
+                        <div class="invalid-feedback">
+                            주소를 입력해주세요.
+                        </div>
+                    </div>
+
+                    <!-- 다섯번째 라인-->
+                    <!-- 휴대폰 입력 -->
+                    <div class="mb-3">
+                        <label for="inputPhone4">휴대폰번호</label>
+                        <input type="tel" class="form-control" id="inputPhone4" name="phone" placeholder="사용자 휴대폰 번호" required>
+                        <div class="invalid-feedback">
+                            휴대폰 번호를 입력해주세요.
+                        </div>
+                    </div>
+
+                    <!-- 여섯번째 라인-->
+                    <!-- 주민번호 입력 -->
+                    <div class="mb-3">
+                        <label for="inputRegisterNumber">주민등록번호</label>
+                        <input type="text" class="form-control" id="inputRegisterNumber" name="reginum" placeholder="OOOOOO-XXXXXXXX" required>
+                        <div class="invalid-feedback">
+                            주민등록번호를 입력해주세요.
+                        </div>
+                    </div>
+
+                    <!-- 일곱번째 라인 -->
+                    <!-- 명시적, 개인정보 수집 이용.. -->
+                    <hr class="mb-4">
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="aggrement" required>
+                        <label class="custom-control-label" for="aggrement">개인정보 수집 및 이용에 동의합니다.</label>
+                    </div>
+                    <!-- 여덟번째 라인 -->
+                    <!-- 가입 버튼 -->
+                    <div class="mb-4"></div>
+                    <button class="btn btn-primary btn-lg btn-block" style="background-color:brown; border-color:brown" type="submit" >가입 완료</button>
+                </form>
+            </div>
+        </div>
+        <footer class="my-3 text-center text-small">
+            <p class="mb-1">&copy; 2023 YU ICE, 사진 저작자 : Unsplash 의 Vladimir Mokry</p>
+        </footer>
+    </div>
+    <script>
+        window.addEventListener('load', () => {
+          const forms = document.getElementsByClassName('validation-form');
+
+          Array.prototype.filter.call(forms, (form) => {
+            form.addEventListener('submit', function (event) {
+              if (form.checkValidity() === false) {
+                event.preventDefault();
+                event.stopPropagation();
+              }
+
+              form.classList.add('was-validated');
+            }, false);
+          });
+        }, false);
+    </script>
+</form>
+<!-- Bootstrap core JS-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Core theme JS-->
+<script src="js/scripts.js"></script>
+<!-- Bootstrap JS -->
+<script th:src="@{/bootstrap.min.js}"></script>
+</body>
+
+<!-- ID 중복 여부 프론트엔드 코드 -->
+<script th:inline="javascript">
+    const loginIDCheck = () => {
+        const loginID = document.getElementById("inputUserID").value;   <!-- 이 문서에서 id의 값을 가지는 값을 받아옴 -->
+        const checkResult = document.getElementById("check-result");    <!-- TAG 요소만 접근할 것이므로 value는 안씀  -->
+        console.log("입력값: ", loginID);
+
+        $.ajax({
+            // 요청 방식 : Post로 보냄, "url : "loginID-check"로 보냄, 데이터: ID
+            type: "post",
+            url: "/user/loginID-check",
+            data:{
+                "loginID": loginID
+            },
+            success : function(res) {
+                console.log("요청성공", res);
+                if (res == "ok") {
+                    console.log("사용 가능한 ID 입니다!");
+                    checkResult.style.color = "green";
+                    checkResult.innerHTML = "사용 가능한 ID 입니다!";
+                } else {
+                    console.log("사용할 수 없는 ID 입니다...");
+                    checkResult.style.color = "red";
+                    checkResult.innerHTML = "이미 사용 중인 ID 입니다...";
+                }
+            },
+            error : function(err) {
+                console.log("에러발생", err);
+            }
+        });
+    }
+</script>
+
+<!-- 비밀번호 일치 여부 확인!-->
+<script th:inline="javascript">
+    const PasswordCheck = () => {
+        const Password1 = document.getElementById("inputPassword4").value;   <!-- 이 문서에서 비밀번호의 값을 가지는 값을 받아옴 -->
+        const Passwordcheck = document.getElementById("inputPasswordCheck4").value
+
+        const checkResult = document.getElementById("check-result-password");    <!-- TAG 요소만 접근할 것이므로 value는 안씀  -->
+
+        $.ajax({
+            // 요청 방식 : Post로 보냄, "url : "password-check"로 보냄, 데이터: Password1, Passwordcheck
+            type: "post",
+            url: "/user/password-check",
+            data: {
+                "PW": Password1,
+                "PWcheck": Passwordcheck
+            },
+            success : function(res) {
+                console.log("요청성공", res);
+                if (res == "ok") {
+                    console.log("비밀번호가 일치합니다!");
+                    checkResult.style.color = "green";
+                    checkResult.innerHTML = "패스워드가 일치합니다!";
+                } else {
+                    console.log("비밀번호가 일치하지 않습니다.");
+                    checkResult.style.color = "red";
+                    checkResult.innerHTML = "패스워드가 일치하지 않습니다. 다시 입력해 주세요.";
+                }
+            },
+            error : function(err) {
+                console.log("에러발생", err);
+            }
+        });
+    }
+</script>
+
+</html>
+
+
