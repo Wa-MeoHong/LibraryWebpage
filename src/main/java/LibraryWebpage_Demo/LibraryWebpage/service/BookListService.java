@@ -20,7 +20,6 @@ import LibraryWebpage_Demo.LibraryWebpage.entity.BookListEntity;
 import LibraryWebpage_Demo.LibraryWebpage.repository.BookListRepository;
 import LibraryWebpage_Demo.LibraryWebpage.repository.BookRepository;
 import lombok.RequiredArgsConstructor;
-import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -60,7 +59,7 @@ public class BookListService {
 
     // Find BookDTO List Using ISBN
     @Transactional
-    public List<BookListDTO> findList(@NotNull List<BookDTO> bookDTOList) {
+    public List<BookListDTO> findList(List<BookDTO> bookDTOList) {
         List<BookListDTO> bookListDTOList = new ArrayList<>();
 
         for (BookDTO bookDTO : bookDTOList){
